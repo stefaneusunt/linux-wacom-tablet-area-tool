@@ -54,6 +54,8 @@ class WacomDevice {
   get_param(param_name) {
     return new Promise((resolve, reject) => {
       cmd_out(['xsetwacom', '--get', this.id, param_name]).then((val) => {
+        val = val.trim();
+        console.log(`[WacomDevice::${this.DeviceName}::${param_name}] -> '${val}'`);
         resolve(val);
       });
     });
@@ -61,7 +63,7 @@ class WacomDevice {
   set_param(param_name, val) {
     return new Promise((resolve, reject) => {
       cmd_out(['xsetwacom', '--set', this.id, param_name, val]).then((out) => {
-        console.log(`[WacomDevice: ${this.DeviceName}] set '${param_name}' to '${val}'.`);
+        console.log(`[WacomDevice::${this.DeviceName}::${param_name}] <- '${val}'.`);
         resolve('ok');
       });
     });

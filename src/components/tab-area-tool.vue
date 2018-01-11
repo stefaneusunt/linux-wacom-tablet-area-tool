@@ -186,9 +186,10 @@
       },
       device_connected: function(dev_con) {
         if (dev_con) {
-          setTimeout(() => {
+          this.$nextTick(function() {
+            this.update_area_container_sizes();
             this.device_area2gui();
-          }, 150);
+          });
         }
       },
       osu_sens: function(new_val) {
@@ -250,18 +251,11 @@
       this.update_devices_status();
       setInterval(() => {
         this.update_devices_status();
-        this.update_area_container_sizes();
       }, 2000);
       // Restore the selected dev index from local storage
       if (localStorage['cur_dev_i']) {
         this.cur_dev_i = parseInt(localStorage['cur_dev_i']);
       }
-    },
-    mounted: function() {
-      // Update the bounding container size using the javascript duct tape
-      setTimeout(() => {
-        this.update_area_container_sizes();
-      }, 150);
     }
   }
 </script>
