@@ -9,8 +9,9 @@
  
 ## Screenshots
 
-[[https://github.com/stefaneusunt/linux-wacom-tablet-area-tool/blob/master/ss1.png|alt=screenshot1]]
-[[https://github.com/stefaneusunt/linux-wacom-tablet-area-tool/blob/master/ss2.png|alt=screenshot2]]
+![screenshot1](https://github.com/stefaneusunt/linux-wacom-tablet-area-tool/blob/master/ss1.png)
+![screenshot2](https://github.com/stefaneusunt/linux-wacom-tablet-area-tool/blob/master/ss2.png)
+
  
 ## Building the project
 
