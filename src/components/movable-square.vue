@@ -44,13 +44,13 @@
 </script>
 
 <style lang="scss" scoped>
-  $size: 15px;
+  $size: 14px;
   .movable-square {
     display: block;
     position: absolute;
     width: $size;
     height: $size;
-    border: 1.4px solid red;
+    border: 1px solid red;
     background-color: #2f2f2f;
     transform: translate(-50%, -50%);
   }

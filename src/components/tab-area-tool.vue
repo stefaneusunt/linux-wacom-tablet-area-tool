@@ -19,10 +19,15 @@
           <movable-square :coords.sync="tr" style="cursor: ne-resize"></movable-square>
           <movable-square :coords.sync="bl" style="cursor: sw-resize"></movable-square>
           <movable-square :coords.sync="br" style="cursor: se-resize"></movable-square>
+          <movable-square :coords.sync="bm" style="cursor:  s-resize"></movable-square>
+          <movable-square :coords.sync="rm" style="cursor:  e-resize"></movable-square>
+          <movable-square :coords.sync="tm" style="cursor:  n-resize"></movable-square>
+          <movable-square :coords.sync="lm" style="cursor:  w-resize"></movable-square>
         </div>
       </div>
       <p class="no-dev-p" v-if="!device_connected">No device detected!</p>
     </div>
+    <div style="display: block; height: 5px"></div>
     <div style="display: flex; align-items: center" v-if="device_connected">
       <div class="inputs-container">
         <div class="space-between">
@@ -122,6 +127,43 @@
           const [dx, dy] = [new_coords.x - this.br.x, new_coords.y - this.br.y];
           this.px_ta_w += dx;
           this.px_ta_h += dy;
+        }
+      },
+      tm: {
+        get: function() {
+          return {x: this.px_ta_x + this.px_ta_w / 2, y: this.px_ta_y}
+        },
+        set: function(new_coords) {
+          const dy = new_coords.y - this.tm.y;
+          this.px_ta_h -= dy;
+          this.px_ta_y += dy;
+        }
+      },
+      lm: {
+        get: function() {
+          return {x: this.px_ta_x, y: this.px_ta_y + this.px_ta_h / 2}
+        },
+        set: function(new_coords) {
+          const dx = new_coords.x - this.lm.x;
+          this.px_ta_x += dx;
+          this.px_ta_w -= dx;
+        }
+      },
+      bm: {
+        get: function() {
+          return {x: this.px_ta_x + this.px_ta_w / 2, y: this.px_ta_y + this.px_ta_h}
+        },
+        set: function(new_coords) {
+          const dy =  new_coords.y - this.bm.y;
+          this.px_ta_h += dy;
+        }
+      },
+      rm: {
+        get: function() {
+          return {x: this.px_ta_x + this.px_ta_w, y: this.px_ta_y + this.px_ta_h / 2}
+        },
+        set: function(new_coords) {
+          this.px_ta_w += new_coords.x - this.rm.x;
         }
       },
       area_drag: {
